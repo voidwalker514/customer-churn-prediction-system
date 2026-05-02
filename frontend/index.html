@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuccessOps Hub - Advanced Churn AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h2>SuccessOps</h2>
+            </div>
+            <nav id="sidebar-nav">
+                <a href="#" class="active" data-target="dashboard-view"><span class="icon">📈</span> Intelligence</a>
+                <a href="#" data-target="customers-view"><span class="icon">👥</span> Customers</a>
+                <a href="#" data-target="alerts-view"><span class="icon">⚡</span> Alerts <span class="badge">3</span></a>
+                <a href="#" data-target="settings-view"><span class="icon">⚙️</span> Settings</a>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">DA</div>
+                <div class="user-info">
+                    <p class="name">Data Analyst</p>
+                    <p class="role">Admin</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Predictive Engine</h1>
+                    <p>Real-time machine learning customer retention analysis</p>
+                </div>
+                <button class="export-btn">Export Report</button>
+            </header>
+
+            <!-- Dashboard View (Active) -->
+            <div id="dashboard-view" class="view-section active">
+                <div class="dashboard-grid">
+                    <!-- Data Input Section -->
+                    <div class="glass-card form-section">
+                        <div class="card-header">
+                            <h3>Run Prediction Model</h3>
+                            <div class="status-indicator"><span class="dot"></span> Model Online</div>
+                        </div>
+                        <form id="prediction-form">
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Age</label>
+                                    <input type="number" id="age" value="35" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Gender</label>
+                                    <select id="gender">
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Tenure (Months)</label>
+                                    <input type="number" id="tenure" value="3" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Contract Type</label>
+                                    <select id="contract">
+                                        <option value="Month-to-month">Month-to-month</option>
+                                        <option value="One year">One year</option>
+                                        <option value="Two year">Two year</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Payment Method</label>
+                                    <select id="payment">
+                                        <option value="Electronic check">Electronic check</option>
+                                        <option value="Mailed check">Mailed check</option>
+                                        <option value="Bank transfer">Bank transfer</option>
+                                        <option value="Credit card">Credit card</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Monthly Charges ($)</label>
+                                    <input type="number" step="0.01" id="monthly" value="95.50" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Total Charges ($)</label>
+                                    <input type="number" step="0.01" id="total" value="286.50" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Support Calls</label>
+                                    <input type="number" id="support" value="5" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="primary-btn glow-effect">
+                                <span class="btn-text">Execute AI Analysis</span>
+                                <div class="spinner" id="btn-spinner" style="display: none;"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="glass-card result-section" id="result-container">
+                        <div class="card-header">
+                            <h3>Intelligence Report</h3>
+                        </div>
+                        
+                        <div class="placeholder-state" id="placeholder-state">
+                            <div class="pulse-ring"></div>
+                            <p>Awaiting customer data feed...</p>
+                        </div>
+
+                        <div class="results-content" id="results-content" style="display: none;">
+                            <div class="risk-indicator" id="risk-indicator">
+                                <h2 id="risk-text">High</h2>
+                                <span>Churn Risk Level</span>
+                            </div>
+
+                            <div class="metrics-grid">
+                                <div class="metric-box">
+                                    <span class="metric-label">Probability Score</span>
+                                    <h3 id="prob-text">85%</h3>
+                                    <div class="progress-bar"><div class="progress-fill" id="prob-bar"></div></div>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-label">Model Prediction</span>
+                                    <h3 id="pred-text">Yes</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="action-card" id="action-card">
+                                <h4>Suggested Action Pipeline</h4>
+                                <p id="action-text">Assign success manager immediately. Offer retention discount.</p>
+                                <button class="action-btn">Trigger Workflow</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers View -->
+            <div id="customers-view" class="view-section" style="display: none;">
+                <div class="glass-card empty-state">
+                    <span class="empty-icon">👥</span>
+                    <h2>Customer Directory</h2>
+                    <p>Connect your CRM (Salesforce/HubSpot) to view the entire customer directory here.</p>
+                    <button class="primary-btn" onclick="showToast('CRM Integration feature coming soon!')">Connect CRM</button>
+                </div>
+            </div>
+
+            <!-- Alerts View -->
+            <div id="alerts-view" class="view-section" style="display: none;">
+                <div class="glass-card empty-state">
+                    <span class="empty-icon">⚡</span>
+                    <h2>Risk Alerts</h2>
+                    <p>No critical retention alerts at this moment. You have 3 medium-priority reviews pending.</p>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings-view" class="view-section" style="display: none;">
+                <div class="glass-card empty-state">
+                    <span class="empty-icon">⚙️</span>
+                    <h2>Model Configuration</h2>
+                    <p>XGBoost Model version 1.0.0 is currently deployed and active.</p>
+                    <button class="secondary-btn" onclick="showToast('Model retraining initiated in background.')">Retrain Model</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Message here</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
